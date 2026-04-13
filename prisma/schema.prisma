@@ -1,0 +1,25 @@
+// https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model WaitlistEntry {
+  id              String   @id @default(cuid())
+  name            String
+  whatsapp        String
+  email           String   @unique
+  propertyCount   Int
+  yearsInIndustry Int
+  createdAt       DateTime @default(now())
+  source          String?
+  utm             String?
+  notes           String?
+
+  @@map("waitlist_entries")
+}
