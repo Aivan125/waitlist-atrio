@@ -147,3 +147,21 @@
     @apply font-light tracking-tight text-balance;
   }
 }
+
+/*
+ * reCAPTCHA v3: ocultar insignia flotante (Google permite si el aviso con enlaces está en el flujo del formulario).
+ * Usar !important porque el widget aplica estilos inline; en móvil a veces bastaba mal sin esto.
+ */
+.grecaptcha-badge {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: fixed !important;
+  right: -100vw !important;
+  bottom: -100vh !important;
+  clip-path: inset(100%) !important;
+}

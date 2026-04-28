@@ -139,6 +139,21 @@ export function WaitlistForm() {
     }
   }, [state.fieldErrors, form]);
 
+  useEffect(() => {
+    if (!recaptchaSiteKey) return;
+    const hideBadges = () => {
+      document.querySelectorAll<HTMLElement>(".grecaptcha-badge").forEach((el) => {
+        el.style.setProperty("display", "none", "important");
+        el.style.setProperty("visibility", "hidden", "important");
+        el.style.setProperty("opacity", "0", "important");
+      });
+    };
+    hideBadges();
+    const observer = new MutationObserver(hideBadges);
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [recaptchaSiteKey]);
+
   if (state.ok) {
     return (
       <div
@@ -555,6 +570,29 @@ export function WaitlistForm() {
                 ? "Espera…"
                 : "Enviar solicitud de acceso"}
           </Button>
+          {recaptchaSiteKey ? (
+            <p className="text-center text-[0.6875rem] leading-snug text-muted-foreground">
+              Este sitio está protegido por reCAPTCHA. Aplican la{" "}
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground underline underline-offset-2 hover:opacity-80"
+              >
+                Política de privacidad
+              </a>{" "}
+              y los{" "}
+              <a
+                href="https://policies.google.com/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground underline underline-offset-2 hover:opacity-80"
+              >
+                Términos del servicio
+              </a>{" "}
+              de Google.
+            </p>
+          ) : null}
         </form>
       </Form>
     </>
