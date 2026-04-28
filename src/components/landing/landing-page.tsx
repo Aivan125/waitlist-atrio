@@ -35,19 +35,19 @@ const STEPS = [
     n: "01",
     title: "Inventario gestionado por nosotros.",
     body:
-      "Olvídate de capturar datos. Nosotros estructuramos tu información y, con una llamada de 5 minutos a la semana, validamos qué sigue activo. Cero inventario fantasma, cero carga administrativa.",
+      "Olvídate de capturar datos. Nosotros estructuramos tu información y, con una breve llamada de 5 minutos a la semana, validamos qué sigue activo. Cero inventario fantasma, cero carga administrativa.",
   },
   {
     n: "02",
-    title: "Pídele a la IA por WhatsApp.",
+    title: "Pide en WhatsApp, filtra visualmente.",
     body:
-      "Escribe lo que tu cliente necesita: 'Tres recámaras en Valle, abajo de 8 millones'. Al instante, el asistente cruza la red y te genera un enlace con las propiedades que hacen match.",
+      "Escríbele a Atrio lo que tu cliente busca. Al instante, la IA cruza la red y te entrega un enlace interactivo para que deslices y preselecciones las mejores opciones desde tu celular.",
   },
   {
     n: "03",
     title: "El cliente elige, tú agendas.",
     body:
-      "Revisa las opciones desde tu celular y desliza para filtrar. Envíale la selección a tu cliente; cuando él marque sus favoritas, recibirás una alerta para coordinar los recorridos.",
+      "Envíale tu selección al cliente. Él revisa el catálogo móvil y marca sus favoritas. Inmediatamente recibirás una alerta en WhatsApp, dejándote todo listo para coordinar los recorridos.",
   },
 ] as const;
 
@@ -99,9 +99,7 @@ export function LandingPage() {
                 <span className="text-emerald-700">WhatsApp.</span>
               </h1>
               <p className="mb-10 max-w-lg text-balance text-lg leading-relaxed text-muted-foreground lg:text-xl">
-                Únete al club privado de los mejores brokers de Monterrey. La
-                Inteligencia Artificial cruza el inventario de la red al instante
-                para que encuentres la propiedad ideal y cierres más rápido.
+              Únete al club privado de los mejores brokers de Monterrey. Atrio, nuestro asistente de Inteligencia Artificial, cruza el inventario de la red al instante para que encuentres la propiedad ideal y cierres más rápido.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <a
@@ -211,11 +209,10 @@ export function LandingPage() {
                 id="como-heading"
                 className="mb-8 max-w-[820px] text-3xl font-light leading-[1.05] tracking-[-0.025em] text-foreground md:text-[3.5rem]"
               >
-                Sin apps nuevas. Sin tableros. Solo WhatsApp.
+                La IA busca en WhatsApp. Tú filtras lo mejor. El cliente elige.
               </h2>
               <p className="max-w-[620px] text-xl font-light leading-relaxed text-muted-foreground">
-                La red es invisible por diseño. Nosotros gestionamos los datos, tú
-                te dedicas a cerrar operaciones.
+                Un ecosistema diseñado para la velocidad. Encuentra propiedades por chat, filtra en una interfaz móvil premium, y deja que tu cliente marque sus favoritas.
               </p>
               <div className="grid gap-12 pt-14 md:grid-cols-3 md:gap-12">
                 {STEPS.map(({ n, title, body }) => (
