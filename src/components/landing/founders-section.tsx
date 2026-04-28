@@ -4,6 +4,7 @@ const REQUIREMENTS = [
   "Propiedades en venta con ticket desde $4,000,000 MXN.",
   "Al menos 10 propiedades activas entre renta y venta, sumadas, que cumplan los valores mínimos anteriores.",
   "Inventario vigente y activo, con información suficiente para consultarlo correctamente dentro de la red.",
+  "Compartir comisión al 50% entre colegas brokers en toda operación cruzada mediante Atrio."
 ] as const;
 
 const BENEFIT_CARDS = [
