@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.col h5 { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg3); margin: 0 0 12px; }
+.col.yes h5 { color: var(--fg1); }
+.item { padding: 8px 0; border-bottom: 1px solid var(--fg4); display: flex; gap: 10px; align-items: flex-start; }
+.item:last-child { border-bottom: 0; }
+.mark { font-size: 14px; line-height: 1.4; flex: 0 0 14px; }
+.mark--yes { color: var(--fg1); }
+.mark--no { color: var(--fg3); }
+.txt { font-size: 13px; line-height: 1.4; }
+.txt--no { color: var(--fg3); text-decoration: line-through; text-decoration-color: rgba(15,14,12,0.3); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="cols">
+    <div class="col yes">
+      <h5>Sí — esto es Atrio</h5>
+      <div class="item"><span class="mark mark--yes">✓</span><span class="txt">Fondo Cal como base</span></div>
+      <div class="item"><span class="mark mark--yes">✓</span><span class="txt">Geist 300 Light en titulares</span></div>
+      <div class="item"><span class="mark mark--yes">✓</span><span class="txt">Jerarquía por opacidades del negro</span></div>
+      <div class="item"><span class="mark mark--yes">✓</span><span class="txt">Números grandes, 100 Thin</span></div>
+    </div>
+    <div class="col no">
+      <h5>No — esto no es Atrio</h5>
+      <div class="item"><span class="mark mark--no">×</span><span class="txt txt--no">Colores que no sean Negro o Cal</span></div>
+      <div class="item"><span class="mark mark--no">×</span><span class="txt txt--no">Degradados, sombras, glow</span></div>
+      <div class="item"><span class="mark mark--no">×</span><span class="txt txt--no">Geist Bold 700</span></div>
+      <div class="item"><span class="mark mark--no">×</span><span class="txt txt--no">Signos de exclamación, emoji</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.row { display: grid; grid-template-columns: 80px 1fr 70px; align-items: baseline; gap: 16px; padding: 6px 0; border-bottom: 1px solid var(--fg4); }
+.row:last-child { border-bottom: 0; }
+.label { font-size: 11px; color: var(--fg3); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.size { font-size: 11px; color: var(--fg3); font-variant-numeric: tabular-nums; text-align: right; }
+.h1 { font-weight: 300; font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; }
+.h2 { font-weight: 300; font-size: 32px; line-height: 1.12; letter-spacing: -0.02em; }
+.h3 { font-weight: 300; font-size: 24px; line-height: 1.15; letter-spacing: -0.01em; }
+.h4 { font-weight: 400; font-size: 18px; line-height: 1.2; }
+.body { font-weight: 400; font-size: 15px; line-height: 1.5; }
+.small { font-weight: 400; font-size: 13px; color: var(--fg2); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="row"><div class="label">H1</div><div class="h1">Tu red de propiedades.</div><div class="size">44 / 300</div></div>
+  <div class="row"><div class="label">H2</div><div class="h2">A un mensaje de WhatsApp.</div><div class="size">32 / 300</div></div>
+  <div class="row"><div class="label">H3</div><div class="h3">50 brokers. Un inventario.</div><div class="size">24 / 300</div></div>
+  <div class="row"><div class="label">H4</div><div class="h4">Cero grupos saturados.</div><div class="size">18 / 400</div></div>
+  <div class="row"><div class="label">Body</div><div class="body">Lo que los grupos de WhatsApp prometían pero no podían cumplir.</div><div class="size">15 / 400</div></div>
+  <div class="row"><div class="label">Small</div><div class="small">Solo por invitación · AMM · Monterrey</div><div class="size">13 / 400</div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+.cell { background: var(--atrio-cal); padding: 16px; border: 1px solid rgba(15,14,12,0.12); border-radius: 6px; }
+.cell--hair { border: 1px solid rgba(15,14,12,0.12); box-shadow: none; }
+.cell--tint { background: rgba(15,14,12,0.03); border: 0; }
+.cell--solid { background: var(--atrio-black); color: var(--fg1-inv); border: 0; }
+.k { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg3); margin-bottom: 8px; }
+.cell--solid .k { color: var(--fg3-inv); }
+.b { font-size: 14px; font-weight: 400; }
+.note { font-size: 12px; color: var(--fg3); margin-top: 14px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="grid">
+    <div class="cell cell--hair">
+      <div class="k">Hairline</div>
+      <div class="b">1px · rgba(15,14,12,0.12)</div>
+    </div>
+    <div class="cell cell--tint">
+      <div class="k">Surface raised</div>
+      <div class="b">Negro @ 3% on Cal</div>
+    </div>
+    <div class="cell cell--solid">
+      <div class="k">On Negro</div>
+      <div class="b">Full contrast moment</div>
+    </div>
+  </div>
+  <div class="note">No drop shadows, no glow, no gradients — explicitly forbidden.</div>
+</div>
+</body>
+</html>

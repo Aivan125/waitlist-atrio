@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.palette { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.swatch { display: flex; flex-direction: column; }
+.swatch__chip {
+  height: 130px;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(15, 14, 12, 0.08);
+}
+.swatch__name {
+  font-weight: 500;
+  font-size: 14px;
+  margin-top: 12px;
+  color: var(--fg1);
+}
+.swatch__hex {
+  font-size: 12px;
+  color: var(--fg2);
+  margin-top: 2px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.swatch__meta {
+  font-size: 11px;
+  color: var(--fg3);
+  margin-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="palette">
+    <div class="swatch">
+      <div class="swatch__chip" style="background:#0F0E0C;"></div>
+      <div class="swatch__name">Negro Atrio</div>
+      <div class="swatch__hex">#0F0E0C</div>
+      <div class="swatch__meta">RGB 15 · 14 · 12 &nbsp;·&nbsp; Pantone Black 6 C</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch__chip" style="background:#F3EEE5; border-color: rgba(15,14,12,0.12);"></div>
+      <div class="swatch__name">Cal</div>
+      <div class="swatch__hex">#F3EEE5</div>
+      <div class="swatch__meta">RGB 243 · 238 · 229 &nbsp;·&nbsp; Pantone 7527 C</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

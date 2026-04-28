@@ -5,8 +5,9 @@ config({ path: ".env" });
 config({ path: ".env.local", override: true });
 
 /**
- * Migraciones: conexión directa (Supabase 5432) vía DIRECT_URL si existe.
- * Sin DIRECT_URL se usa DATABASE_URL (pooler puede fallar en migrate — ver docs del proyecto).
+ * Migraciones: en Supabase usa DIRECT_URL al host directo `db.<ref>.supabase.co:5432`
+ * (ver .env.example). Si solo existe DATABASE_URL apuntando al pooler, `migrate dev`
+ * puede fallar (P1001 u otros) aunque el config sea correcto.
  */
 const migrationUrl =
   process.env["DIRECT_URL"] ?? process.env["DATABASE_URL"];

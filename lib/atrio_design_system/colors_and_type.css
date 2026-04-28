@@ -1,0 +1,258 @@
+/* ============================================================
+   Atrio Design System — Colors & Type
+   ------------------------------------------------------------
+   Two colors only: Negro Atrio (#0F0E0C) and Cal (#F3EEE5).
+   Hierarchy is expressed through opacity of Negro on Cal.
+   Typography is Geist only — one family, six weights.
+   ============================================================ */
+
+/* --- Fonts ------------------------------------------------- */
+
+@font-face {
+  font-family: "Geist";
+  src: url("./fonts/Geist-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("./fonts/Geist-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("./fonts/Geist-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("./fonts/Geist-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("./fonts/Geist-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("./fonts/Geist-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+/* Geist Bold (700) + heavier exist in the font folder but are
+   explicitly OFF-BRAND for Atrio materials. Not registered. */
+
+/* --- Color tokens ------------------------------------------ */
+
+:root {
+  /* Base palette — only two colors, ever. */
+  --atrio-black: #0F0E0C;
+  --atrio-cal:   #F3EEE5;
+
+  /* Surfaces */
+  --bg:          var(--atrio-cal);
+  --bg-inverse:  var(--atrio-black);
+
+  /* Foreground — hierarchy by opacity of Negro on Cal */
+  --fg1: rgba(15, 14, 12, 1.00);   /* 100 — body / primary text */
+  --fg2: rgba(15, 14, 12, 0.65);   /* 65  — secondary text */
+  --fg3: rgba(15, 14, 12, 0.45);   /* 45  — labels / meta / captions */
+  --fg4: rgba(15, 14, 12, 0.12);   /* 12  — lines / dividers / borders */
+
+  /* Inverse (Cal on Negro — same ramp flipped) */
+  --fg1-inv: rgba(243, 238, 229, 1.00);
+  --fg2-inv: rgba(243, 238, 229, 0.65);
+  --fg3-inv: rgba(243, 238, 229, 0.45);
+  --fg4-inv: rgba(243, 238, 229, 0.12);
+
+  /* Subtle surface tints (Cal offset by small amounts of Negro
+     for hover / pressed states — never a new hue) */
+  --surface-raised:   rgba(15, 14, 12, 0.03);
+  --surface-hover:    rgba(15, 14, 12, 0.05);
+  --surface-pressed:  rgba(15, 14, 12, 0.09);
+
+  /* The only sanctioned "accent" is WhatsApp green, used ONLY
+     when literally depicting the WhatsApp surface. Otherwise
+     unused in Atrio's own brand materials. */
+  --whatsapp-green:    #25D366;
+  --whatsapp-teal:     #075E54;
+  --whatsapp-bg:       #E5DDD5;
+  --whatsapp-outgoing: #DCF8C6;
+
+  /* --- Type tokens ---------------------------------------- */
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system,
+               "Helvetica Neue", Arial, sans-serif;
+
+  /* Weights */
+  --w-thin:     100;  /* Numbers 80px+ only */
+  --w-light:    300;  /* All titles / headings */
+  --w-regular:  400;  /* Body, UI, messages */
+  --w-medium:   500;  /* Emphasis / subheadings */
+  --w-semibold: 600;  /* Labels UPPERCASE + tracking */
+  /* 700 Bold is OFF-BRAND per guidelines — do not use. */
+
+  /* Sizes — modest scale, airy */
+  --fs-display:  80px;  /* Big number protagonists */
+  --fs-h1:       56px;
+  --fs-h2:       40px;
+  --fs-h3:       28px;
+  --fs-h4:       22px;
+  --fs-body:     16px;
+  --fs-small:    14px;
+  --fs-label:    12px; /* 600 + uppercase + tracking */
+
+  /* Line-heights */
+  --lh-display:  0.95;
+  --lh-heading:  1.12;
+  --lh-body:     1.5;
+  --lh-tight:    1.25;
+
+  /* Tracking */
+  --tr-label:    0.12em;  /* LABELS LIKE THIS */
+  --tr-kicker:   0.08em;
+  --tr-tight:   -0.02em;  /* Display / big numbers */
+
+  /* Spacing scale — 4px base, airy */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* Radii — restrained. Atrio is not rounded-soft. */
+  --radius-none:  0px;
+  --radius-xs:    2px;
+  --radius-sm:    4px;
+  --radius-md:    6px;   /* default UI radius */
+  --radius-lg:   10px;
+  --radius-pill: 999px;  /* only for pill labels / avatars */
+
+  /* Borders */
+  --border-hair: 1px solid var(--fg4);
+  --border-mid:  1px solid rgba(15, 14, 12, 0.22);
+
+  /* Shadows — per guidelines, NO drop shadows, glow, or gradients
+     on brand materials. Shadows exist only where necessary for
+     product-chrome realism (e.g. a WhatsApp mock), not Atrio UI. */
+  --shadow-none: none;
+
+  /* Motion */
+  --ease:       cubic-bezier(0.2, 0.0, 0.0, 1.0);
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast:   120ms;
+  --dur-base:   220ms;
+  --dur-slow:   420ms;
+}
+
+/* --- Base element styling --------------------------------- */
+
+html, body {
+  background: var(--bg);
+  color: var(--fg1);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: var(--w-regular);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "ss02", "cv11";
+}
+
+/* Headings — always Light 300 per guidelines */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: var(--w-light);
+  color: var(--fg1);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tr-tight);
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); letter-spacing: -0.01em; }
+
+p  { margin: 0; color: var(--fg1); text-wrap: pretty; }
+
+small { font-size: var(--fs-small); color: var(--fg2); }
+
+hr {
+  border: 0;
+  border-top: var(--border-hair);
+  margin: var(--space-6) 0;
+}
+
+/* --- Semantic type classes -------------------------------- */
+
+.display {
+  font-weight: var(--w-thin);
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-tight);
+}
+
+.kicker {
+  font-weight: var(--w-semibold);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--fg3);
+}
+
+.label {
+  font-weight: var(--w-semibold);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--fg2);
+}
+
+.meta {
+  font-size: var(--fs-small);
+  color: var(--fg3);
+}
+
+.emphasis { font-weight: var(--w-medium); }
+
+.lede {
+  font-weight: var(--w-light);
+  font-size: var(--fs-h4);
+  line-height: 1.35;
+  color: var(--fg2);
+}
+
+/* Numeric tabular contexts — prices, counts, dates */
+.num, .tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "cv11" 1;
+}
+
+/* Utility: invert scheme (dark surface) */
+.on-black {
+  background: var(--atrio-black);
+  color: var(--fg1-inv);
+}
+.on-black h1, .on-black h2, .on-black h3,
+.on-black h4, .on-black h5, .on-black h6,
+.on-black p { color: var(--fg1-inv); }
+.on-black .kicker,
+.on-black .label { color: var(--fg3-inv); }

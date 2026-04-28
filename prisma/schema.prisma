@@ -10,16 +10,31 @@ datasource db {
 }
 
 model WaitlistEntry {
-  id              String   @id @default(cuid())
-  name            String
-  whatsapp        String
-  email           String   @unique
-  propertyCount   Int
-  yearsInIndustry Int
-  createdAt       DateTime @default(now())
-  source          String?
-  utm             String?
-  notes           String?
+  id                      String   @id @default(cuid())
+  name                    String
+  whatsapp                String   @unique
+  email                   String   @unique
+  propertyCount           Int?
+  yearsInIndustry         Int?
+  primaryZone             String?
+  exclusiveListingsBucket String?
+  ticketSaleBucket        String?
+  ticketRentBucket        String?
+  acceptsNewsletter       Boolean  @default(false)
+  createdAt               DateTime @default(now())
+  source                  String?
+  utm                     String?
+  notes                   String?
 
   @@map("waitlist_entries")
+}
+
+/// Ventanas fijas (p. ej. hora UTC) para limitar envíos por IP; compatible con serverless.
+model WaitlistSubmitWindow {
+  ip          String
+  windowStart DateTime
+  count       Int      @default(0)
+
+  @@id([ip, windowStart])
+  @@map("waitlist_submit_windows")
 }

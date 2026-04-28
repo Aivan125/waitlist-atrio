@@ -7,9 +7,15 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --color-atrio-black: var(--atrio-black);
+  --color-atrio-cal: var(--atrio-cal);
+  --color-fg-secondary: var(--atrio-fg-secondary);
+  --color-fg-tertiary: var(--atrio-fg-tertiary);
+  --color-fg-quaternary: var(--atrio-fg-quaternary);
+  /* Geist la define next/font en el body como --font-geist-sans (no auto-referencia) */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-heading: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -49,82 +55,95 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  /* Atrio — lib/atrio_design_system/colors_and_type.css */
+  --atrio-black: #0f0e0c;
+  --atrio-cal: #f3eee5;
+  --atrio-fg-secondary: rgb(15 14 12 / 65%);
+  --atrio-fg-tertiary: rgb(15 14 12 / 45%);
+  --atrio-fg-quaternary: rgb(15 14 12 / 12%);
+  --atrio-surface-hover: rgb(15 14 12 / 5%);
+  --atrio-surface-pressed: rgb(15 14 12 / 9%);
+
+  --background: var(--atrio-cal);
+  --foreground: var(--atrio-black);
+  --card: var(--atrio-cal);
+  --card-foreground: var(--atrio-black);
+  --popover: var(--atrio-cal);
+  --popover-foreground: var(--atrio-black);
+  --primary: var(--atrio-black);
+  --primary-foreground: var(--atrio-cal);
+  --secondary: color-mix(in srgb, var(--atrio-black) 4%, var(--atrio-cal));
+  --secondary-foreground: var(--atrio-black);
+  --muted: color-mix(in srgb, var(--atrio-black) 4%, var(--atrio-cal));
+  --muted-foreground: var(--atrio-fg-secondary);
+  --accent: color-mix(in srgb, var(--atrio-black) 6%, var(--atrio-cal));
+  --accent-foreground: var(--atrio-black);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: var(--atrio-fg-quaternary);
+  --input: rgb(15 14 12 / 18%);
+  --ring: rgb(15 14 12 / 45%);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* DS: radio UI típico 6px, tope 10px */
+  --radius: 0.375rem;
+  --sidebar: var(--atrio-cal);
+  --sidebar-foreground: var(--atrio-black);
+  --sidebar-primary: var(--atrio-black);
+  --sidebar-primary-foreground: var(--atrio-cal);
+  --sidebar-accent: color-mix(in srgb, var(--atrio-black) 4%, var(--atrio-cal));
+  --sidebar-accent-foreground: var(--atrio-black);
+  --sidebar-border: var(--atrio-fg-quaternary);
+  --sidebar-ring: rgb(15 14 12 / 45%);
 }
 
+/* Inversión Atrio (Cal sobre Negro) — por si se usa .dark u overlays */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: var(--atrio-black);
+  --foreground: var(--atrio-cal);
+  --card: var(--atrio-black);
+  --card-foreground: var(--atrio-cal);
+  --popover: var(--atrio-black);
+  --popover-foreground: var(--atrio-cal);
+  --primary: var(--atrio-cal);
+  --primary-foreground: var(--atrio-black);
+  --secondary: rgb(243 238 229 / 8%);
+  --secondary-foreground: var(--atrio-cal);
+  --muted: rgb(243 238 229 / 6%);
+  --muted-foreground: rgb(243 238 229 / 65%);
+  --accent: rgb(243 238 229 / 10%);
+  --accent-foreground: var(--atrio-cal);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --border: rgb(243 238 229 / 12%);
+  --input: rgb(243 238 229 / 12%);
+  --ring: rgb(243 238 229 / 45%);
+  --sidebar: var(--atrio-black);
+  --sidebar-foreground: var(--atrio-cal);
+  --sidebar-primary: var(--atrio-cal);
+  --sidebar-primary-foreground: var(--atrio-black);
+  --sidebar-accent: rgb(243 238 229 / 8%);
+  --sidebar-accent-foreground: var(--atrio-cal);
+  --sidebar-border: rgb(243 238 229 / 12%);
+  --sidebar-ring: rgb(243 238 229 / 45%);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
-    @apply font-sans;
+    @apply scroll-smooth font-sans;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv11";
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-light tracking-tight text-balance;
   }
 }

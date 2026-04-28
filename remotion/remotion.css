@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+/* Incluir solo el bundle Remotion para no duplicar utilidades de la app Next */
+@source "./**/*.{tsx,ts}";

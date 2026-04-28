@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Landing — lista de espera (brokers)
 
-## Getting Started
+Next.js (App Router), Prisma ORM **7**, PostgreSQL (Supabase), shadcn/ui y validación con Zod.
 
-First, run the development server:
+- **Planeación del producto:** [lib/docs/PROJECT_PLAN.md](lib/docs/PROJECT_PLAN.md)
+
+## Requisitos
+
+- Node.js LTS
+- Proyecto Supabase con Postgres (connection strings de pooling y directa)
+
+## Configuración
+
+1. Copia variables de entorno:
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+2. Rellena `DATABASE_URL` (pooler, p. ej. puerto `6543`) y `DIRECT_URL` (conexión directa, puerto `5432`) desde el dashboard de Supabase.
+
+3. Aplica migraciones (usa `DIRECT_URL` vía `prisma.config.ts`):
+
+   ```bash
+   npx prisma migrate deploy
+   ```
+
+   En desarrollo, también:
+
+   ```bash
+   npx prisma migrate dev
+   ```
+
+4. Instala dependencias y genera el cliente Prisma:
+
+   ```bash
+   npm install
+   ```
+
+## Desarrollo
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Producción local
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Prisma 7
 
-To learn more about Next.js, take a look at the following resources:
+- Configuración: [`prisma.config.ts`](prisma.config.ts) (URL para migraciones: `DIRECT_URL` o `DATABASE_URL`).
+- Esquema: [`prisma/schema.prisma`](prisma/schema.prisma) (sin `url` en el datasource; [documentación](https://pris.ly/d/config-datasource)).
+- Cliente generado en `src/generated/prisma` con adaptador [`@prisma/adapter-pg`](https://pris.ly/d/prisma7-client-config) en [`src/lib/prisma.ts`](src/lib/prisma.ts).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Despliegue (Vercel)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Configura `DATABASE_URL` y `DIRECT_URL` en el panel del proyecto. Ejecuta `prisma migrate deploy` contra la base de producción según tu flujo.

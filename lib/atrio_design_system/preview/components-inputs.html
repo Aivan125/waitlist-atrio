@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.stack { display: flex; flex-direction: column; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.lab { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg3); }
+.input {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--fg1);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(15,14,12,0.22);
+  padding: 10px 0;
+  outline: none;
+  transition: border-color 220ms var(--ease);
+}
+.input::placeholder { color: var(--fg3); }
+.input:focus { border-bottom-color: var(--fg1); }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.hint { font-size: 12px; color: var(--fg3); }
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(15,14,12,0.03);
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+.search:focus-within { background: transparent; border-color: rgba(15,14,12,0.22); }
+.search input { border: 0; background: transparent; flex: 1; outline: none; font: inherit; color: var(--fg1); }
+.search input::placeholder { color: var(--fg3); }
+.search .glyph { color: var(--fg3); font-weight: 400; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="stack">
+    <div class="search">
+      <span class="glyph">⌕</span>
+      <input placeholder="Tres recámaras en Valle, abajo de ocho millones.">
+    </div>
+    <div class="row2">
+      <div class="field">
+        <label class="lab">Teléfono</label>
+        <input class="input" value="+52 81 1234 5678">
+      </div>
+      <div class="field">
+        <label class="lab">Invitación</label>
+        <input class="input" placeholder="Código del broker que te invita">
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 18px; }
+.row:last-child { margin-bottom: 0; }
+.btn {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.005em;
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: 0;
+  cursor: pointer;
+  transition: background 220ms var(--ease), color 220ms var(--ease), transform 120ms;
+}
+.btn:active { transform: scale(0.98); }
+.btn--primary { background: var(--atrio-black); color: var(--fg1-inv); }
+.btn--primary:hover { background: rgba(15,14,12,0.85); }
+.btn--ghost { background: transparent; color: var(--fg1); border: 1px solid rgba(15,14,12,0.22); }
+.btn--ghost:hover { background: rgba(15,14,12,0.05); }
+.btn--text { background: transparent; color: var(--fg1); padding: 12px 8px; }
+.btn--text:hover { color: var(--fg2); }
+.btn--sm { padding: 8px 14px; font-size: 13px; }
+.btn--lg { padding: 16px 28px; font-size: 15px; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg3); min-width: 82px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="row">
+    <div class="label">Primary</div>
+    <button class="btn btn--primary">Solicitar acceso →</button>
+    <button class="btn btn--primary btn--sm">Guardar</button>
+    <button class="btn btn--primary btn--lg">Subir inventario</button>
+  </div>
+  <div class="row">
+    <div class="label">Ghost</div>
+    <button class="btn btn--ghost">Ver inventario</button>
+    <button class="btn btn--ghost btn--sm">Cancelar</button>
+  </div>
+  <div class="row">
+    <div class="label">Text</div>
+    <button class="btn btn--text">Más opciones →</button>
+    <button class="btn btn--text" style="color: var(--fg2);">Omitir</button>
+  </div>
+</div>
+</body>
+</html>

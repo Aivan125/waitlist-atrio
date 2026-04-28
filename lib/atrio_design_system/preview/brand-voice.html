@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.tone { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.ex { padding: 12px 14px; border-radius: 6px; font-size: 13px; line-height: 1.45; }
+.ex--yes { background: rgba(15,14,12,0.04); color: var(--fg1); }
+.ex--no { border: 1px dashed rgba(15,14,12,0.25); color: var(--fg3); }
+.tag { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg3); margin-bottom: 6px; }
+.tag--yes { color: var(--fg1); }
+.principle { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg3); margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="principle">Principio · La red exige, no suplica</div>
+  <div class="tone">
+    <div>
+      <div class="tag tag--yes">✓ Así sí</div>
+      <div class="ex ex--yes">Tu inventario lleva 8 días sin actualizarse. La red funciona porque todos ponemos.</div>
+    </div>
+    <div>
+      <div class="tag">× Así no</div>
+      <div class="ex ex--no">¡Recordatorio amistoso! 😊 No olvides mantener tu inventario al día.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

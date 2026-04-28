@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.mark { display: flex; align-items: center; justify-content: center; height: 140px; }
+.mark img { width: 120px; height: 120px; object-fit: contain; }
+.mark--dark { background: var(--atrio-black); border-radius: 6px; }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg3); margin-top: 10px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="row">
+    <div>
+      <div class="mark"><img src="../assets/atrio-isotipo-negro.png" alt="Atrio spiral, black on cal"></div>
+      <div class="label">Símbolo · sobre Cal</div>
+    </div>
+    <div>
+      <div class="mark mark--dark"><img src="../assets/atrio-isotipo-cal.png" alt="Atrio spiral, cal on black"></div>
+      <div class="label">Símbolo · sobre Negro</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

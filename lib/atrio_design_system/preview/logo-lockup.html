@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.lock { display: flex; align-items: center; gap: 4px; padding: 22px; border-radius: 6px; }
+.lock--cal { background: var(--atrio-cal); border: 1px solid var(--fg4); }
+.lock--blk { background: var(--atrio-black); }
+.lock img { width: 88px; height: 88px; object-fit: contain; }
+.word { font-family: var(--font-sans); font-weight: 400; font-size: 56px; letter-spacing: -0.02em; }
+.word--cal { color: var(--fg1); }
+.word--blk { color: var(--fg1-inv); }
+.label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg3); margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="row">
+    <div>
+      <div class="lock lock--cal">
+        <img src="../assets/atrio-isotipo-negro.png" alt="">
+        <span class="word word--cal">atrio</span>
+      </div>
+      <div class="label">Lockup positivo · Geist 400</div>
+    </div>
+    <div>
+      <div class="lock lock--blk">
+        <img src="../assets/atrio-isotipo-cal.png" alt="">
+        <span class="word word--blk">atrio</span>
+      </div>
+      <div class="label">Lockup negativo</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

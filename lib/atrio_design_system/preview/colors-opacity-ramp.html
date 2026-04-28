@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.ramp { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; }
+.step__chip {
+  height: 100px;
+  border-radius: 6px;
+  border: 1px solid rgba(15,14,12,0.06);
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+  color: #0F0E0C;
+  font-weight: 500;
+  font-size: 13px;
+}
+.step__name { font-size: 13px; font-weight: 500; margin-top: 10px; }
+.step__meta { font-size: 11px; color: var(--fg3); margin-top: 2px; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="ramp">
+    <div>
+      <div class="step__chip" style="background: rgba(15,14,12,1);   color: #F3EEE5;">100</div>
+      <div class="step__name">Primary</div>
+      <div class="step__meta">fg1 · body</div>
+    </div>
+    <div>
+      <div class="step__chip" style="background: rgba(15,14,12,0.65); color: #F3EEE5;">65</div>
+      <div class="step__name">Secondary</div>
+      <div class="step__meta">fg2 · lede</div>
+    </div>
+    <div>
+      <div class="step__chip" style="background: rgba(15,14,12,0.45); color: #F3EEE5;">45</div>
+      <div class="step__name">Labels</div>
+      <div class="step__meta">fg3 · meta</div>
+    </div>
+    <div>
+      <div class="step__chip" style="background: rgba(15,14,12,0.12); color: #0F0E0C;">12</div>
+      <div class="step__name">Lines</div>
+      <div class="step__meta">fg4 · borders</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+/* Shared styles for Design-System preview cards.
+   Each card is a 700×variable canvas on Cal background. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--atrio-cal);
+  color: var(--fg1);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.card {
+  width: 700px;
+  padding: 28px 32px;
+  background: var(--atrio-cal);
+  position: relative;
+}
+
+.card--black {
+  background: var(--atrio-black);
+  color: var(--fg1-inv);
+}
+
+/* tiny helper: invisible container that still fills the card */
+.row { display: flex; align-items: center; gap: 16px; }
+.col { display: flex; flex-direction: column; gap: 8px; }

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Atrio · WhatsApp UI Kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="components.jsx"></script>
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+/* Scripted conversation. Each step is one or more messages added in sequence. */
+const SCRIPT = [
+  { id: "welcome", title: "Bienvenida", msgs: [
+    { kind: "day", text: "HOY" },
+    { kind: "msg", from: "in", time: "10:40", body: "Bienvenido a Atrio. Ya eres parte de la red." },
+    { kind: "msg", from: "in", time: "10:40", body: "Somos 49 brokers en el AMM. Tu inventario empieza a estar visible en cuanto lo subas.", stacked: true },
+  ]},
+  { id: "upload", title: "Sube inventario", msgs: [
+    { kind: "attach", time: "10:41", name: "Inventario-octubre.pdf", meta: "12 propiedades · 480 KB" },
+    { kind: "msg", from: "in", time: "10:41", body: "Listo. Tus propiedades ya están visibles para los otros brokers." },
+    { kind: "msg", from: "in", time: "10:41", body: "Te aviso cuando haya match con una búsqueda.", stacked: true },
+  ]},
+  { id: "search", title: "Búsqueda natural", msgs: [
+    { kind: "msg", from: "out", time: "10:42", body: "Tres recámaras en Valle, abajo de ocho millones." },
+    { kind: "typing" },
+  ]},
+  { id: "results", title: "Resultados", msgs: [
+    { kind: "msg", from: "in", time: "10:42", body: "Tengo 4 matches en el AMM. Te paso el más fresco." },
+    { kind: "prop", time: "10:42", kicker: "Valle Alto · Exclusiva", title: "Casa en privada, 3 rec.", meta: "240 m² · 3 rec · 4 baños", price: "$8.4M" },
+    { kind: "msg", from: "in", time: "10:42", body: "Subió hace 2h. Captada por Mariana R. ¿Te paso contacto?", stacked: true },
+  ]},
+  { id: "close", title: "Cierre de sinergia", msgs: [
+    { kind: "msg", from: "out", time: "10:43", body: "Sí, mándamelo." },
+    { kind: "msg", from: "in", time: "10:43", body: "Mariana R. — +52 81 1234 5678. Le aviso que vas.", stacked: false },
+    { kind: "sys", text: "Cerraste tu primera sinergia. Eso es Atrio." },
+  ]},
+];
+
+function App() {
+  const [step, setStep] = useState(0);
+  const [composerText, setComposerText] = useState("");
+  const messagesRef = useRef(null);
+
+  // accumulate all messages up to current step
+  const visible = [];
+  for (let i = 0; i <= step; i++) visible.push(...SCRIPT[i].msgs);
+
+  // strip trailing typing indicator if we've advanced past it
+  useEffect(() => {
+    if (messagesRef.current) {
+      messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+    }
+  }, [step]);
+
+  const next = () => setStep(s => Math.min(SCRIPT.length - 1, s + 1));
+  const prev = () => setStep(s => Math.max(0, s - 1));
+  const reset = () => setStep(0);
+
+  // Composer feels "typed" when we're at step 2 (the search) — pre-fill for demo
+  useEffect(() => {
+    if (step === 2) setComposerText("");
+    else setComposerText("");
+  }, [step]);
+
+  const handleSend = () => {
+    if (composerText.trim()) {
+      setComposerText("");
+      next();
+    }
+  };
+
+  return (
+    <div className="page">
+      <aside className="page__side">
+        <div className="kicker">Atrio · WhatsApp UI Kit</div>
+        <h1>La única interfaz del producto es una conversación.</h1>
+        <p>Atrio no tiene app ni dashboard. El broker sube su inventario y hace búsquedas en lenguaje natural por WhatsApp. La IA responde como un colega — directa, corta, sin floritura.</p>
+        <div className="rule"/>
+        <ol className="steps">
+          {SCRIPT.map((s, i) => (
+            <li key={s.id} className={i <= step ? "on" : ""}>{s.title}</li>
+          ))}
+        </ol>
+        <div className="controls">
+          <button className="ctrl-btn" onClick={prev} disabled={step === 0}>← Atrás</button>
+          <button className="ctrl-btn ctrl-btn--primary" onClick={next} disabled={step === SCRIPT.length - 1}>Siguiente →</button>
+          <button className="ctrl-btn" onClick={reset}>Reiniciar</button>
+        </div>
+      </aside>
+
+      <PhoneFrame time="10:43">
+        <ChatHeader presence={step === 2 ? "escribiendo..." : "en línea"}/>
+        <div className="messages" ref={messagesRef}>
+          {visible.map((m, idx) => {
+            if (m.kind === "day") return <DaySeparator key={idx}>{m.text}</DaySeparator>;
+            if (m.kind === "sys") return <SystemNote key={idx}>{m.text}</SystemNote>;
+            if (m.kind === "typing") return <TypingDots key={idx}/>;
+            if (m.kind === "attach") return <AttachmentBubble key={idx} {...m}/>;
+            if (m.kind === "prop") return <PropertyCard key={idx} {...m}/>;
+            return <MessageBubble key={idx} from={m.from} time={m.time} stacked={m.stacked}>{m.body}</MessageBubble>;
+          })}
+        </div>
+        <Composer
+          value={composerText}
+          onChange={setComposerText}
+          onSend={handleSend}
+          placeholder={step < 2 ? "Mensaje" : step === 2 ? "Escribe tu búsqueda…" : "Mensaje"}
+        />
+      </PhoneFrame>
+
+      <aside className="page__side">
+        <div className="kicker">Componentes</div>
+        <p style={{marginTop: 0}}>PhoneFrame · StatusBar · ChatHeader · MessageBubble · TypingDots · PropertyCard · AttachmentBubble · SystemNote · DaySeparator · Composer.</p>
+        <div className="rule"/>
+        <div className="kicker">Reglas de copy</div>
+        <p>Tú, siempre. Frases cortas que cierran. Sin signos de exclamación. Sin emojis en mensajes formales — un 🏠 para una propiedad es la única excepción tolerable.</p>
+        <p>Nunca se dice "nuestra avanzada IA". El bot habla como un colega al que le pasas un brief.</p>
+      </aside>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>

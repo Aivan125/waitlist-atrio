@@ -7,11 +7,11 @@ Documento de referencia para el MVP de landing con waitlist que valida interés 
 
 | Fase                         | Qué incluye                                                                                                                                                | Qué no incluye                                                                                                  |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| **Fase A (este entregable)** | Solo este archivo **Markdown** en `docs/PROJECT_PLAN.md`: producto, MVP, arquitectura, landing, modelo de datos, env, dependencias, seguridad, despliegue. | **No** ejecutar `npm`, `npx`, `create-next-app`, Prisma, ni shadcn como parte de la creación de este documento. |
+| **Fase A (este entregable)** | Solo este archivo **Markdown** en `lib/docs/PROJECT_PLAN.md`: producto, MVP, arquitectura, landing, modelo de datos, env, dependencias, seguridad, despliegue. | **No** ejecutar `npm`, `npx`, `create-next-app`, Prisma, ni shadcn como parte de la creación de este documento. |
 | **Fase B (posterior)**       | Bootstrap del repo: scaffold Next.js, Prisma + migraciones, shadcn, `.env.local`, Server Action del waitlist, deploy.                                      | Depende de que se inicie explícitamente otra sesión de implementación.                                          |
 
 
-**Nota sobre el repositorio:** el estado actual es **solo** `docs/PROJECT_PLAN.md` (sin `package.json`, sin código de aplicación). La Fase B creará el proyecto desde cero según este documento. Si en el futuro reapareciera código residual, alinearlo con el plan sigue siendo trabajo de implementación, no de este archivo.
+**Nota sobre el repositorio:** este documento vive en **`lib/docs/PROJECT_PLAN.md`**. El código de la app está en la raíz del repo (`src/`, `prisma/`, etc.). Si el estado del repo cambia, la fuente de verdad para el producto sigue siendo este archivo.
 
 ---
 
@@ -222,5 +222,6 @@ Cuando se arranque la implementación, seguir en orden (detalle en sección 7):
 | 1.1     | 2026-04-13 | Fase A solo Markdown; Fase B bootstrap diferido; nota estado del repo; sección 10 renumerada            |
 | 1.2     | 2026-04-13 | Repo reducido a solo `docs/PROJECT_PLAN.md`; nota de estado actualizada                                 |
 | 1.3     | 2026-04-13 | Campos de waitlist: nombre, WhatsApp, email, número de propiedades, años en industria (`WaitlistEntry`) |
+| 1.4     | 2026-04-13 | Implementación Fase B; documento en `lib/docs/`; Prisma 7 + adapter `pg` |
 
 

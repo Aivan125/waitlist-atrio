@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.demo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.side { }
+.side p { margin: 0 0 6px; }
+.p1 { color: var(--fg1); font-size: 16px; }
+.p2 { color: var(--fg2); font-size: 14px; }
+.p3 { color: var(--fg3); font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; }
+.rule { height: 1px; background: var(--fg4); margin: 10px 0 10px; }
+.rule-inv { background: rgba(243,238,229,0.12); }
+.side--b { background: var(--atrio-black); padding: 16px 20px; border-radius: 6px; }
+.p1-inv { color: var(--fg1-inv); }
+.p2-inv { color: var(--fg2-inv); }
+.p3-inv { color: var(--fg3-inv); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="demo">
+    <div class="side">
+      <p class="p3">Inventario · AMM</p>
+      <div class="rule"></div>
+      <p class="p1">Tres recámaras en Valle.</p>
+      <p class="p2">Subió esta mañana · 240 m²</p>
+    </div>
+    <div class="side side--b">
+      <p class="p3-inv">Sinergia · 04</p>
+      <div class="rule rule-inv"></div>
+      <p class="p1-inv">Cerraste tu primera sinergia.</p>
+      <p class="p2-inv" style="font-size:14px;">Eso es Atrio.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
