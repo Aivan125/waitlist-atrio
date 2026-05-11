@@ -1,10 +1,26 @@
 import Link from "next/link";
+import { canonicalUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Aviso de privacidad | Atrio",
+  title: "Aviso de privacidad integral",
   description:
     "Aviso de privacidad integral conforme a la LFPDPPP (México) — tratamiento de datos en lista de espera y newsletter Atrio.",
+  alternates: {
+    canonical: canonicalUrl("/privacidad"),
+  },
+  openGraph: {
+    title: "Aviso de privacidad integral | Atrio",
+    description:
+      "Aviso de privacidad integral conforme a la LFPDPPP (México) — tratamiento de datos en lista de espera y newsletter Atrio.",
+    url: "/privacidad",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aviso de privacidad integral | Atrio",
+    description:
+      "Aviso de privacidad integral conforme a la LFPDPPP (México) — tratamiento de datos en lista de espera y newsletter Atrio.",
+  },
 };
 
 const CONTACT_EMAIL = "privacidad@useatrio.com";
